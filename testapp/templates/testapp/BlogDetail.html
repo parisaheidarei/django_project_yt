@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}{{blog.title}}{% endblock title %}
+
+{% block content %}
+<h1> {{blog.title}} </h1>
+   
+{% if user in blog.likes.all %}
+    <a href="{% url 'postunlike' blog.id %}">unlike</a>
+{% else %}
+    <a href="{% url 'postlike' blog.id %}">like</a>
+{% endif %}
+<p>
+    {{blog.content}}
+    {{blog.date}}
+</p> 
+
+
+<img style="width: 300px;" src="{{blog.image.url}}" alt="">
+{% endblock content %} 
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1> {{blog.title}} </h1>
+   
+   {% if user in blog.likes.all %}
+       <a href="{% url 'postunlike' blog.id %}">unlike</a>
+   {% else %}
+       <a href="{% url 'postlike' blog.id %}">like</a>
+   {% endif %}
+   <p>
+       {{blog.content}}
+       {{blog.date}}
+   </p> 
+
+ 
+   <img style="width: 300px;" src="{{blog.image.url}}" alt="">
+   
+   
+</body>
+</html>
