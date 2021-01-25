@@ -47,7 +47,7 @@ def PostLike(request, postid):
     user = request.user
     if user.is_authenticated:
         if user in post.likes.all():
-            return HttpResponse('you are like this post already')
+            return HttpResponse('you are like this post already!')
         post.likes.add(user)   
        #return HttpResponse('you like a post')
         return redirect('detail', postid)
